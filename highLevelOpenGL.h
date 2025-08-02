@@ -18,6 +18,6 @@ void glmView(glm::mat4* view, glm::vec3 target = glm::vec3(0, 0, 0), glm::vec3 u
 void glmPerspective(glm::mat4* projection, int width, int height, float fov = 45.0f, float nearClippingPlane = 0.1f, float farClippingPlane = 100.0f);
 void glmRotate(glm::mat4* model, float time, float x, float y, float z, float scale = 1.0f);
 GLFWwindow* glfwUtilCreateWindow(int versionMajor, int versionMinor, int profile, int scr_width, int scr_height, const char* title, GLFWmonitor* fullScreen = NULL, GLFWwindow* share = NULL);
-void moveCamera(vec3 pos, float anglex, float angley, float distance, float anglez, vec3 upDirection);
-void moveCamera(vec3 pos, vec3 viewPoint, vec3 upDirection);
+glm::mat4 utilMmoveCamera(glm::vec3 pos, float anglex, float angley, float distance, float anglez, glm::vec3 upDirection);
+glm::mat4 utilMoveCamera(glm::vec3 pos, glm::vec3 viewPoint, glm::vec3 upDirection);
 #endif
