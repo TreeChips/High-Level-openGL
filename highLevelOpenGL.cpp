@@ -8,7 +8,6 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <utility>
-#include <GLFW/glfw3.h>
 #define STB_IMAGE_IMPLEMENTATION
 #include "include/stb_image.h"
 
@@ -117,37 +116,4 @@ void glUtilUniformMatrixMVP(GLuint program, glm::mat4 model, glm::mat4 view, glm
 void drawTriangles(GLuint vao, int offset, int vertices) {
     glBindVertexArray(vao);
     glDrawArrays(GL_TRIANGLES, offset, vertices);
-}
-
-void glmView(glm::mat4 *view, glm::vec3 target, glm::vec3 upDir, glm::vec3 pos) {
-    *view = glm::lookAt(
-        glm::vec3(pos),
-        glm::vec3(target),
-        glm::vec3(upDir)
-    );
-};
-
-void glmPerspective(glm::mat4 *projection, int scr_width, int scr_height, float fov, float nearClippingPlane, float farClippingPlane) {
-    *projection = glm::perspective(
-        glm::radians(fov),
-        (float)scr_width / scr_height,
-        nearClippingPlane,
-        farClippingPlane
-    );
-}
-
-void glmRotate(glm::mat4 *model, float time, float angleX, float angleY, float angleZ, float scale) {
-    *model = glm::rotate(
-        glm::mat4(scale),
-        time,
-        glm::vec3(angleX, angleY, angleZ)
-    );
-};
-
-GLFWwindow* glfwUtilCreateWindow(int versionMajor, int versionMinor, int profile, int scr_width, int scr_height, const char* title, GLFWmonitor* fullScreen, GLFWwindow* share) {
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, versionMajor);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, versionMinor);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, profile);
-    GLFWwindow* window = glfwCreateWindow(scr_width, scr_height, title, fullScreen, share);
-    return window;
 }
